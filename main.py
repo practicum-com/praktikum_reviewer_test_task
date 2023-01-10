@@ -25,7 +25,7 @@ class Calculator:
     def get_today_stats(self):
         today_stats = 0
         for Record in self.records:
-            if Record.date == dt.datetime.now().date():
+            if Record.date == dt.datetime.now().date():#Create a variable today and use it 
                 today_stats = today_stats + Record.amount #Replace with today_stats += Record.amount
         return today_stats
 
@@ -36,7 +36,7 @@ class Calculator:
             if (
                 (today - record.date).days < 7 and
                 (today - record.date).days >= 0
-            ): #remove extra perentesis. it does not clarify .
+            ): #remove extra perentesis. it does not clarify the operation.
                 week_stats += record.amount
         return week_stats
 
@@ -54,11 +54,12 @@ class CaloriesCalculator(Calculator):
 
 class CashCalculator(Calculator):
     # Create an enumeration with those values.
+    # Create a docstring documentation about these variables.
     USD_RATE = float(60)  # US dollar exchange rate.
     EURO_RATE = float(70)  # Euro exchange rate.
 
     def get_today_cash_remained(self, currency,
-                                USD_RATE=USD_RATE, EURO_RATE=EURO_RATE):
+                                USD_RATE=USD_RATE, EURO_RATE=EURO_RATE): #USD_RATE and EURO_RATE does not need as parameters. Those variables are memebers of the object.
         currency_type = currency
         cash_remained = self.limit - self.get_today_stats()
         if currency == 'usd':
@@ -82,5 +83,5 @@ class CashCalculator(Calculator):
                    ' your debt is - {0:.2f} {1}'.format(-cash_remained,
                                                      currency_type)
 
-    def get_week_stats(self):
+    def get_week_stats(self):# This over writing method does not need it. 
         super().get_week_stats()
