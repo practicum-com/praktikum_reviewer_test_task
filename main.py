@@ -1,9 +1,12 @@
 import datetime as dt
+#The applicacion does not have tests
+#Split the main.py file in three files, record.py, calculator.py and calories_calculator.py
 
-
+#It must be replace with a dataclass 
 class Record:
     def __init__(self, amount, comment, date=''):
         self.amount = amount
+        #Validate the correct date format.
         self.date = (
             dt.datetime.now().date() if
             not
